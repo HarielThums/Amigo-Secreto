@@ -1,6 +1,7 @@
-import mongoose from ('mongoose')
+const mongoose = require('mongoose')
 
 mongoose.connect('mongodb://localhost/eCondos', {
+  useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false

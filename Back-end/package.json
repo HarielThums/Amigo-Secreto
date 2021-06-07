@@ -1,5 +1,5 @@
 {
-  "name": "Desafio-eCondos",
+  "name": "desafio-amigo-secreto",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -17,6 +17,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.12",
-    "nodemailer": "^6.6.1"
+    "nodemailer": "^6.6.1",
+    "nodemailer-express-handlebars": "^4.0.0"
   }
 }
