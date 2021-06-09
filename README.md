@@ -1,5 +1,7 @@
 # Desafio Amigo Secreto
 
+*Desafio:* Desenvolver um sistema para criação e sorteio de Amigo secreto, ao realizar o sorteio deve ser enviado um email para cada participante informando a pessoa que ela deve presentear.
+
 ## Tecnologias utilizadas :star: :
 
 -   Nodejs
