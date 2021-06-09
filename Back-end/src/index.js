@@ -1,14 +1,16 @@
-const express = require('express')
-const port = process.env.PORT || 3000
-const app = express()
-require('dotenv').config()
+const express = require("express");
+const port = process.env.PORT || 3003;
+const app = express();
+const cors = require('cors')
+require("dotenv").config();
 
 //config
+    //cors
+    app.use(cors())
     //bodyParser
-    app.use(express.json())
-    app.use(express.urlencoded({ extended: true }))
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
     //routes
-    app.use(require('./app/controllers/productController'))
-    
+    app.use(require("./app/controllers/productController"));
 
-app.listen(port, () => console.log('Server on'))
+app.listen(port, () => console.log("Server on"));

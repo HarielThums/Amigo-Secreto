@@ -1,6 +1,6 @@
 {
-    "host": "smtp.mailtrap.io",
-    "port": 2525,
-    "user": "f6f39da0e64750",
-    "pass": "6593fbea1a4eae"
+	"host": "smtp.ethereal.email",
+	"port": 587,
+	"user": "tyrell.feeney@ethereal.email",
+	"pass": "nD4kmRwjAK9qjr58vM"
 }
