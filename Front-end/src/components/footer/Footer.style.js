@@ -10,9 +10,10 @@ export const Container = styled.div`
 	color: #fff;
 	background-color: #1c1f33;
 
+	min-width: 300px;
+
 	a {
 		margin: 10px;
 		color: #fff;
 	}
-
 `;

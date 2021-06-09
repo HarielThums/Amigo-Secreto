@@ -13,8 +13,4 @@ export default createGlobalStyle`
         font-family: sans-serif;
     }
 
-    footer {
-        
-    }
-
 `;

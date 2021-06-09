@@ -10,6 +10,7 @@ export default class Create extends Component {
 		e.preventDefault();
 
 		const { amigoSecreto } = this.state;
+		this.setState({ error: "", success: "" });
 
 		if (!amigoSecreto)
 			return this.setState({
@@ -18,12 +19,10 @@ export default class Create extends Component {
 
 		try {
 			const res = await api.post("/", { amigoSecreto });
-			this.setState({ sucess: "Amigo secreto criado" });
-			const id = res.data.id;
-			setID(id);
-			console.log(id);
+			this.setState({ success: "Amigo secreto criado" });
+			setID(res.data.id);
 		} catch (error) {
-			this.setState({ error: "Ocorreu um erro ao criar" });
+			this.setState({ error: "Ocorreu um erro ao criar o seu amigo secreto" });
 		}
 	};
 
@@ -35,7 +34,7 @@ export default class Create extends Component {
 						<div>
 							<div>
 								{this.state.error && <p id="error">{this.state.error}</p>}
-								{this.state.sucess && <p id="success">{this.state.sucess}</p>}
+								{this.state.success && <p id="success">{this.state.success}</p>}
 							</div>
 							<label>
 								<p>Qual será o nome do seu Amigo Secreto? </p>

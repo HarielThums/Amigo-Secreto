@@ -3,16 +3,17 @@ import { BodyContainer } from "./Body.style";
 import api from "../../service/api";
 
 export default class Raffle extends Component {
-	state = { error: "", sucess: "" };
+	state = { error: "", success: "" };
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
 
+		this.setState({ error: "", success: "" });
 		const sorteioID = localStorage.getItem("ID");
-		console.log(sorteioID);
+
 		try {
-			await api.get(`/sorteio/${sorteioID}`)
-			this.setState({ sucess: "Sorteio realizado, favor checar seu email" });
+			const res = await api.get(`/sorteio/${sorteioID}`);
+			this.setState({ success: "Sorteio realizado, favor checar seu email" });
 		} catch (error) {
 			this.setState({ error: "Ocorreu um erro ao sortear" });
 		}
@@ -26,13 +27,13 @@ export default class Raffle extends Component {
 						<div>
 							<div>
 								{this.state.error && <p id="error">{this.state.error}</p>}
-								{this.state.sucess && <p id="success">{this.state.sucess}</p>}
+								{this.state.success && <p id="success">{this.state.success}</p>}
 							</div>
-							<label>
 								<p>
 									Ao sortear será enviado um email para cada um dos participantes
 									com o nome sorteado!
 								</p>
+							<label>
 								<button type="submit"> Sortear </button>
 							</label>
 						</div>

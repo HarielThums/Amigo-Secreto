@@ -3,25 +3,26 @@ import { BodyContainer } from "./Body.style";
 import api from "../../service/api";
 
 export default class Append extends Component {
-	state = { nome: "", email: "", error: "", sucess: "" };
+	state = { nome: "", email: "", error: "", success: "" };
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const { nome, email } = this.state;
+		this.setState({ error: "", success: "" });
+		const sorteioID = localStorage.getItem("ID");
 
 		if (!nome || !email)
 			return this.setState({ error: "Por favor, preencha os campos nome e email " });
 
-		const sorteioID = localStorage.getItem("ID");
-		console.log(sorteioID);
+		if (!sorteioID)
+			return this.setState({ error: "Por favor, crie um amigo secreto primeiro " });
 
 		try {
-			await api.put(`/${sorteioID}`, { nome, email });
-			this.setState({ sucess: "Pessoa adicionada" });
+			const res = await api.put(`/${sorteioID}`, { nome, email });
+			this.setState({ success: "Pessoa adicionada" });
 		} catch (error) {
-			console.log(error);
-			this.setState({ error: "Ocorreu um erro ao criar" });
+			this.setState({ error: "Ocorreu um erro ao adicionar novo participante" });
 		}
 	};
 
@@ -33,7 +34,7 @@ export default class Append extends Component {
 						<div>
 							<div>
 								{this.state.error && <p id="error">{this.state.error}</p>}
-								{this.state.sucess && <p id="success">{this.state.sucess}</p>}
+								{this.state.success && <p id="success">{this.state.success}</p>}
 							</div>
 							<label>
 								<p>Adicione um novo participante ao seu Amigo secreto.</p>
