@@ -11,9 +11,13 @@ export default class Raffle extends Component {
 		const sorteioID = localStorage.getItem("ID");
 		this.setState({ error: "", success: "" });
 
+		if (sorteioID === null)
+			return this.setState({ error: 'Crie seu amigo secreto primeiro'})
+
 		try {
 			const res = await api.get(`/sorteio/${sorteioID}`);
 			this.setState({ success: res.data.success, error: res.data.error });
+			localStorage.clear();
 		} catch (error) {
 			this.setState({ error: "Houve um erro interno" });
 		}

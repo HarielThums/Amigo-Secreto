@@ -79,9 +79,6 @@ router.get("/sorteio/:id", async (req, res) => {
 	try {
 		const sorteio = await Sorteio.findById(req.params.id);
 
-		if (sorteio.status === false)
-			return res.status(200).send({ error: "Este amigo secreto já foi sorteado" });
-
 		let pessoaSorteio = [];
 		await sorteio.pessoas.forEach((pessoa) => {
 			pessoaSorteio.push(pessoa.email);
@@ -118,7 +115,7 @@ router.get("/sorteio/:id", async (req, res) => {
 			});
 		}
 
-		//evitando spam, um amigo secreto só pode ser 'sorteado' uma vez
+		//armazenando status de 'já sorteado'
 		await sorteio.updateOne({ $set: { status: false } });
 
 		return res.status(200).send({ success: "Emails enviados" });
