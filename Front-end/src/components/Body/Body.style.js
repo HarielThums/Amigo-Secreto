@@ -38,6 +38,12 @@ export const BodyContainer = styled.div`
 		font-size: 20px;
 		border-radius: 5px;
 		border-style: hidden;
+		cursor: pointer;
+	}
+	button.remover {
+		width: 40px;
+		margin: 0px 10px;
+		background-color: #ff3333;
 	}
 
 	li {

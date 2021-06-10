@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import Create from "./components/Body/Create";
 import Append from "./components/Body/Append";
 import Raffle from "./components/Body/Raffle";
-import Footer from "./components/footer/Footer";
 import ListAll from "./components/Body/ListAll";
 
 function App() {
@@ -21,8 +20,6 @@ function App() {
 			<ListAll />
 
 			<Raffle />
-
-			<Footer />
 		</div>
 	);
 }

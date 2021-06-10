@@ -15,7 +15,7 @@ router.get("/:id", async (req, res) => {
 	try {
 		const sorteio = await Sorteio.findById(req.params.id);
 
-		const pessoas = sorteio.pessoas
+		const pessoas = sorteio.pessoas;
 
 		return res.status(200).send({ pessoas });
 	} catch (error) {
@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
 	}
 });
 
-//update / append new user
+//update
 router.put("/:id", async (req, res) => {
 	try {
 		const { nome, email } = req.body;
@@ -50,11 +50,25 @@ router.put("/:id", async (req, res) => {
 				return res.status(200).send({ error: "Este participante já foi adicionado" });
 		}
 
-		await sorteio.updateOne({ $push: { pessoas: { nome, email } } });
+		await sorteio.updateOne({ $push: { pessoas: { nome, email } } }); //adiciona novo participante
 
 		await sorteio.save();
 
 		return res.status(200).send({ success: "Participante adicionado" });
+	} catch (error) {
+		return res.status(400).send({ error: "Internal error" });
+	}
+});
+
+//delete participante
+router.delete("/:sorteioId/:userId", async (req, res) => {
+	try {
+		const sorteio = await Sorteio.findById(req.params.sorteioId);
+		const user = req.params.userId
+
+		await sorteio.updateOne({ $pull: { pessoas: { _id: user }}}) // remove participante
+		
+		return res.status(200).send({ success: 'Participante removido' });
 	} catch (error) {
 		return res.status(400).send({ error: "Internal error" });
 	}

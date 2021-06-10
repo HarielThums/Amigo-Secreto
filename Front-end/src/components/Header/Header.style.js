@@ -10,10 +10,11 @@ export const Container = styled.div`
 	p {
 		margin: 10px;
 		font-size: 25px;
+		margin-bottom: 20px;
 	}
 
-	div.vitrine { // preciso mudar a cor para a do background
-		background-color: #c9c9c9;
-		margin-top: 30px;
+	a.midias {
+		margin: 10px;
+		color: #fff;
 	}
 `;
