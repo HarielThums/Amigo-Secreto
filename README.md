@@ -17,6 +17,7 @@
     -   Axios
     -   Styled Components
     -   React icons
+    -   SWR
 
 ## Rodando o projeto 📑:
 
@@ -35,4 +36,4 @@
 - Mantenha esse terminal aberto e abra outro;
 - Acesse via terminal a pasta `Front-end`;
 - Rode o comando `npm i` e em seguida `npm start`;
-- Acesse a `url` informada no terminal;
+- A página irá abrir automaticamente;
