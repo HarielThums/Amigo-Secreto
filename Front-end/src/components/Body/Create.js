@@ -19,10 +19,10 @@ export default class Create extends Component {
 
 		try {
 			const res = await api.post("/", { amigoSecreto });
-			this.setState({ success: "Amigo secreto criado" });
+			this.setState({ success: res.data.success, error: res.data.error });
 			setID(res.data.id);
 		} catch (error) {
-			this.setState({ error: "Ocorreu um erro ao criar o seu amigo secreto" });
+			this.setState({ error: "Houve um erro interno" });
 		}
 	};
 

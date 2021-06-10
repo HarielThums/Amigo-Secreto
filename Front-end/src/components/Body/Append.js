@@ -20,9 +20,9 @@ export default class Append extends Component {
 
 		try {
 			const res = await api.put(`/${sorteioID}`, { nome, email });
-			this.setState({ success: "Pessoa adicionada" });
+			this.setState({ success: res.data.success, error: res.data.error });
 		} catch (error) {
-			this.setState({ error: "Ocorreu um erro ao adicionar novo participante" });
+			this.setState({ error: "Houve um erro interno" });
 		}
 	};
 

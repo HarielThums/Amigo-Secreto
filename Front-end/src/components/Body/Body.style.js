@@ -39,6 +39,22 @@ export const BodyContainer = styled.div`
 		border-radius: 5px;
 		border-style: hidden;
 	}
+
+	li {
+		display: block;
+		list-style-type: none;
+		margin: 0;
+		box-sizing: border-box;
+		height: 25%;
+		font-size: 25px;
+		margin-top: 10px;
+	}
+	li:nth-child(odd) {
+		clear: both;
+		float: left;
+		width: 50%;
+	}
+
 	#error {
 		width: 10%;
 		color: #ff3333;
