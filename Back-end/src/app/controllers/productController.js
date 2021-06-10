@@ -64,11 +64,11 @@ router.put("/:id", async (req, res) => {
 router.delete("/:sorteioId/:userId", async (req, res) => {
 	try {
 		const sorteio = await Sorteio.findById(req.params.sorteioId);
-		const user = req.params.userId
+		const user = req.params.userId;
 
-		await sorteio.updateOne({ $pull: { pessoas: { _id: user }}}) // remove participante
-		
-		return res.status(200).send({ success: 'Participante removido' });
+		await sorteio.updateOne({ $pull: { pessoas: { _id: user } } }); // remove participante
+
+		return res.status(200).send({ success: "Participante removido" });
 	} catch (error) {
 		return res.status(400).send({ error: "Internal error" });
 	}
@@ -93,10 +93,9 @@ router.get("/sorteio/:id", async (req, res) => {
 			let sorteado = pessoaSorteio[k + 1];
 			if (k == pessoaSorteio.length - 1) sorteado = pessoaSorteio[0];
 
-			for (let i = 0; i < sorteio.pessoas.length; i++) {
-				if ((await sorteio.pessoas[i].email) === sorteado)
-					sorteado = sorteio.pessoas[i].nome;
-			}
+			sorteio.pessoas.map((pessoa) => {
+				if (pessoa.email === sorteado) sorteado = pessoa.nome;
+			});
 
 			const message = {
 				to: pessoaSorteio[k],
